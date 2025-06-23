@@ -8,6 +8,9 @@ from langchain_tavily import TavilySearch
 
 @tool
 def triple(num:float) -> float:
+    """
+    Just Triple the number
+    """
     return float(num) * 3
 
 tools = [TavilySearch(max_results = 1),triple]
