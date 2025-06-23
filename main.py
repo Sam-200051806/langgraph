@@ -9,7 +9,7 @@ AGENT_REASON = "yaha se shuru hoga kyuki yeh reasoning agent hai"
 ACT = "act"
 LAST = -1
 def should_continue(state:MessagesState)->str:
-    if not state["messages"][LAST].tools_calls:
+    if not state["messages"][LAST].tool_calls:
         return END
     return ACT
 
@@ -29,3 +29,5 @@ app.get_graph().draw_mermaid_png(output_file_path = "flow.png")
 if __name__ == "__main__":
     print("hello")
     # print(os.getenv("INDEX_NAME"))
+    res = app.invoke({"messages": [HumanMessage(content="What is the weather in Delhi? List it and then Triple it ")]})
+    print(res["messages"][LAST].content)
